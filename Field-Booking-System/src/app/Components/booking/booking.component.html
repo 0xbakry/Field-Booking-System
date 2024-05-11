@@ -1,0 +1,22 @@
+<div class="bookings-container">
+    <h2>My Bookings</h2>
+    <div *ngFor="let field of bookedFields" class="field-card">
+      <img [src]="'assets/Images/' + field.img" alt="{{ field.name }}">
+      <div class="field-details">
+        <h3><a [routerLink]="['/fields', 'field-details', field.id]" class="field-name">{{ field.name }}</a></h3>        
+        
+        <!-- <h3><a [routerLink]="['/profile', 'favorites-fields']" class="field-name">{{ field.name }}</a></h3>         -->
+
+        <p>Price: ${{ field.price }}</p>
+        <p>Type: {{ field.type }}</p>
+      </div>
+    </div>
+
+    <div class="total-price">
+        <span>Total Price: ${{ calculateTotalPrice() }}</span>
+    </div>
+    
+    <button class="btn btn-primary">Pay Now</button>
+    <button class="btn btn-back" [routerLink]="['/profile']">Back</button>
+  </div>
+  
