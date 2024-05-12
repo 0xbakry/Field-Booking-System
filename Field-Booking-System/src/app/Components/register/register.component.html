@@ -5,12 +5,14 @@
         <input type="text" name="username" placeholder="username" formControlName = "username">
         <input type="text" name="phone" placeholder="phone number" formControlName = "phone">
         <input type="email" name="email" placeholder="email" formControlName = "email">
-        <button>Update</button>
+        <input type="text" name="password" placeholder="password" formControlName = "password">
+        <button>Register</button>
     </form>
 
     
     <p-toast />
 
 </div>
-
-
+<div class="textContainer">
+    <p>Already have account? <span><a routerLink="/login">Log In</a></span> </p>
+</div>

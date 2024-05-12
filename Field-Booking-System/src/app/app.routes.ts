@@ -9,6 +9,8 @@ import { HomeComponent } from './Components/home/home.component';
 import { FeildsComponent } from './Components/feilds/feilds.component';
 import { FeildDetailsComponent } from './Components/feild-details/feild-details.component';
 import { FieldtpageComponent } from './Components/fieldtpage/fieldtpage.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
 
 export const routes: Routes = [
     {path:"",component:HomeComponent},
@@ -19,7 +21,10 @@ export const routes: Routes = [
     {path:"profile/favorites-fields", component:FavoritesComponent},
     {path:"profile/bookings", component:BookingComponent},
     {path:"fields",component:FeildsComponent},
-    {path:"fields/:id",component:FeildDetailsComponent}
+    {path:"fields/:id",component:FeildDetailsComponent},
+    {path: "login", component: LoginComponent},
+    {path: "register", component: RegisterComponent},
+    {path: "update/:id", component: UpdateComponent},
 
 ];
 

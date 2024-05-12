@@ -2,58 +2,39 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators , ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { UsersService } from '../../sevices/users.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { UsersService } from '../../sevices/users.service';
 
 @Component({
-  selector: 'app-update',
+  selector: 'app-register',
   standalone: true,
   imports: [ReactiveFormsModule, RouterModule, HttpClientModule, RouterOutlet, ToastModule],
   providers: [UsersService, MessageService],
-  templateUrl: './update.component.html',
-  styleUrl: './update.component.scss'
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss'
 })
-export class UpdateComponent {
-  
-  constructor(private users: UsersService, private activeRouter: ActivatedRoute, private router: Router, private messageService: MessageService){
-    this.id = this.activeRouter.snapshot.params["id"];
-  }
+export class RegisterComponent {
 
-  id: string;
-  user: any;
+  constructor(private users: UsersService, private activeRouter: ActivatedRoute, private router: Router, private messageService: MessageService){}
 
-  ngOnInit(): void {
-    this.users.getUser(this.id).subscribe({
-      next:(res)=>{
-        this.user = res
-        this.form
-        .setValue({
-            username: this.user.username,
-            phone: this.user.phone,
-            email: this.user.email
-        })
-      },
-      error:(err)=>(console.log(err))
-    });
-  }
-
-  
   form = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.min(3)]),
     phone: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{11}$')]),
     email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.min(1)])
   })
 
   submit(){
     console.log(this.form)
     if(this.form.valid) {
-      console.log(this.id);
-      this.users.updateUser(this.id,this.form.value).subscribe({
+      
+      
+      this.users.registerUser(this.form.value).subscribe({
         next:(res)=>{
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Updated successfully' });
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Registered successfully' });
             setTimeout(() => {
-              this.router.navigate(['/']);
+              this.router.navigate(['/login']);
             }, 1000);          
         },
         error:(err)=>(console.log(err))
@@ -62,13 +43,16 @@ export class UpdateComponent {
     else if (this.form['controls']['email'].invalid){
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid email' });
     }
+    else if (this.form['controls']['password'].invalid){
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid password' });
+    }
     else if (this.form['controls']['phone'].invalid){
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid phone number' });
     }
     else if (this.form['controls']['username'].invalid){
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid username' });
     }
-  }
 
+  }
 
 }
