@@ -35,7 +35,9 @@ export class LoginComponent {
           if(Object.keys(res).length) {
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'logged in successfully' });
             setTimeout(() => {
-              this.router.navigate(['/']);
+              this.router.navigate(['/'], { replaceUrl: true }).then(() => {
+                window.location.reload();
+              });
             }, 1000);
             //this.users.setUserId(res[0].id);
             this.users.setUser(res[0].id, res[0].username);

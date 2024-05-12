@@ -1,30 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { FeildsService } from '../../sevices/feilds.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-fieldtpage',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule, RouterModule, FormsModule, CommonModule],
+  providers:[FeildsService],
   templateUrl: './fieldtpage.component.html',
   styleUrl: './fieldtpage.component.css'
 })
 export class FieldtpageComponent implements OnInit {
-  constructor(private route: ActivatedRoute){
+  constructor(private route: ActivatedRoute, private service: FeildsService){
   }
- // use service to get the fields
-  fields:{name:string, type:string, price:number, img:string}[]=[
-    {name: "HG Field", type:"Padel", price:50, img:"assets/img.jpg" },
-    {name: "HR Field", type:"Basketball", price:50,img:"assets/img2.jpg" },
-    {name: "HS Field", type:"Football", price:50, img:"assets/img3.jpg"},
-    {name: "HS Field", type:"Football", price:50, img:"assets/img.jpg"},
-    {name: "HS Field", type:"Football", price:50, img:"assets/img2.jpg"}
-  ];
-  fieldsarr:any // fill field array from fields of specified type
-  type="Padel" ;
+
+  fields:any // fill field array from fields of specified type
+  type:any;
   ngOnInit(){
-    // this.route.paramMap.subscribe(params => {
-    //   this.type = params.get('name');
-    // });
+    this.route.params.subscribe(params => {
+      this.type = params['type'];
+    });
+    this.service.getFeildsByType(this.type).subscribe({
+      next:(data)=>{
+        this.fields = data;
+        console.log(data);
+      },
+      error:(err)=>{console.log("Error")}
+    })
   }
   // for fields.type type== this.type
 

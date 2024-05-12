@@ -4,12 +4,12 @@
   @for(field of fields; track field){
      <div class="col mr-1" style="display: flex;">
        <div class="card" style="width: 20rem;">
-         <img class="card-img-top" src={{field.img}} >
+         <img class="card-img-top" src="assets/{{field.img}}" >
           <div class="card-body">
-            <h5 class="card-title">{{field.name}}</h5>
-            <p class="card-text">Type: {{field.type}}</p>
-            <p class="card-text">Price:  {{ field.price  }}</p>
-            <a routerLink="/field" class="btn btn-primary">See Details</a>
+            <h5 class="card-title" style="color: #2f479e; font-weight: bolder;">{{field.name}}</h5>
+            <p class="card-text"  style="color: #2f479e;"> <strong >Type:</strong> {{field.type}}</p>
+            <p class="card-text" style="color: #2f479e;"> <strong >Price:</strong>  {{ field.price  | currency:'EGP'}}</p>
+            <a routerLink="/fields/{{field.id}}" class="btn btn-primary" style="background-color:#0a1e5b ;">See Details</a>
           </div>
        </div>
       </div>

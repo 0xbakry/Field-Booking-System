@@ -20,6 +20,7 @@ export const routes: Routes = [
     {path:"profile/bookings", component:BookingComponent},
     {path:"fields",component:FeildsComponent},
     {path:"fields/:id",component:FeildDetailsComponent},
+    {path: 'fields/type/:type', component: FieldtpageComponent},
     {path: "login", component: LoginComponent},
     {path: "register", component: RegisterComponent},
     {path: "update/:id", component: UpdateComponent},

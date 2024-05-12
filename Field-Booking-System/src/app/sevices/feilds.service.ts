@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FeildComponent } from '../Components/feild/feild.component';
 import { Observable } from 'rxjs';
@@ -16,6 +16,11 @@ export class FeildsService {
   }
   getFeildByID(id:number){
     return this.http.get(this.DB_URL+"/"+id);
+  }
+  getFeildsByType(type: any): Observable<FeildComponent[]> {
+    //filter by type
+    const params = new HttpParams().set('type', type);
+    return this.http.get<FeildComponent[]>(this.DB_URL, { params });
   }
 
 }

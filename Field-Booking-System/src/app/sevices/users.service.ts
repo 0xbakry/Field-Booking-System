@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 
 interface User{
   id: string;
@@ -30,9 +31,12 @@ export class UsersService {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("email",email);
     queryParams = queryParams.append("password",password);
+    localStorage.setItem('currentUser', JSON.stringify(queryParams));
+    console.log(localStorage.getItem('currentUser'));
+    
     return this.http.get<User[]>(this.url, {params:queryParams} );
   }
-
+ 
 
   registerUser(obj: any) {
     obj.bookings = [];
@@ -47,6 +51,23 @@ export class UsersService {
   getUser(id: any) {
     return this.http.get(this.url +"/"+ id )
   }
+  /////
+  // logout() {
+  //   localStorage.removeItem('currentUser');
+  // }
+  // // Check if user is logged in
+  // isLoggedIn(): boolean {
+  //   return !!localStorage.getItem('currentUser');
+  // }
+  // // Get current logged in user
+  // getCurrentUser() {
+  //   const currentUserString = localStorage.getItem('currentUser');
+  //   if (currentUserString) {
+  //     return JSON.parse(currentUserString);
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   setUserId(userId: string): void {
     this.userId = userId;
@@ -71,7 +92,7 @@ export class UsersService {
     sessionStorage.setItem('id', '');
     sessionStorage.setItem('username', '');
     sessionStorage.setItem('isLogged', 'false');
-    this.isLogged = false;
+    this.isLogged = false;    
   }
 
   getUsername() {
