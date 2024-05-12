@@ -9,6 +9,8 @@ import { FieldtpageComponent } from './Components/fieldtpage/fieldtpage.componen
 
 import { FeildsComponent } from './Components/feilds/feilds.component';
 import { FeildDetailsComponent } from './Components/feild-details/feild-details.component';
+import { HomeComponent } from './Components/home/home.component';
+import { FieldtpageComponent } from './Components/fieldtpage/fieldtpage.component';
 
 export const routes: Routes = [
     {path:"",component:HomeComponent},
@@ -18,7 +20,8 @@ export const routes: Routes = [
     {path:"profile/update-profile", component:UpdateComponent},
     {path:"profile/favorites-fields", component:FavoritesComponent},
     {path:"profile/bookings", component:BookingComponent},
-    {path:"feilds",component:FeildsComponent},
-    {path:"feilds/:id",component:FeildDetailsComponent}
+    {path:"fields",component:FeildsComponent},
+    {path:"fields/:id",component:FeildDetailsComponent}
+
 ];
 

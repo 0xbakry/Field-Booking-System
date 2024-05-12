@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FeildsService } from '../../sevices/feilds.service';
-import { FeildComponent } from '../feild/feild.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FeildComponent } from '../feild/feild.component';
 
 @Component({
   selector: 'app-feilds',
