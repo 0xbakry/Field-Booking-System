@@ -15,6 +15,9 @@ import { MessageService } from 'primeng/api';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+
+  id = "";
+
   constructor(private users: UsersService, private activeRouter: ActivatedRoute, private router: Router, private messageService: MessageService){}
 
   form = new FormGroup({
@@ -34,7 +37,7 @@ export class LoginComponent {
             setTimeout(() => {
               this.router.navigate(['/']);
             }, 1000);
-            
+            this.users.setUserId(res[0].id);
           }
           else {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Wrong email or password' });

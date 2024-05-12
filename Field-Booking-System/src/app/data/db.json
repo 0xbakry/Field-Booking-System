@@ -291,6 +291,15 @@
       "password": "123",
       "bookings": [],
       "favourits": []
+    },
+    {
+      "id": "e41c",
+      "username": "test99999",
+      "phone": "99999999999",
+      "email": "999test@test.com",
+      "password": "99999999999",
+      "bookings": [],
+      "favourits": []
     }
   ]
 }
