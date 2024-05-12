@@ -5,8 +5,8 @@ import { FavoritesComponent } from './Components/favorites/favorites.component';
 import { BookingComponent } from './Components/booking/booking.component';
 import { FeildsComponent } from './Components/feilds/feilds.component';
 import { FeildDetailsComponent } from './Components/feild-details/feild-details.component';
-import { HomeComponent } from './Components/home/home.component';
 import { FieldtpageComponent } from './Components/fieldtpage/fieldtpage.component';
+import { HomeComponent } from './Components/home/home.component';
 
 export const routes: Routes = [
     {path:"",component:HomeComponent},

@@ -1,0 +1,14 @@
+<div class="alert alert-primary" style="background-color: #6f95d3; text-align: center; box-shadow: 0px 0.01px 4px 0px white;">
+    @if(isFavorite){
+        <button class="btn btn-danger" style="color: #ebeff5; font-size: 12px;"(click)="Favorite()">&#x2764;</button>
+    }
+    @else {
+        <button class="btn btn-danger" style="font-size: 12px;background-color: #ebeff5;color: black"(click)="Favorite()">&#x2764; </button>
+    }
+    <br>
+    <img src="/assets/{{oneFeild.type}}.png" alt="" class="img-thumbnail rounded-circle" style="width: 200px; height: 200px; background-color: #ebeff5; margin: 5px;">
+    <h4 style="color: #ebeff5; text-shadow: 2px 1px 3px black;">Name : {{ oneFeild.name }}</h4>        
+    <h4 style="color: #ebeff5; text-shadow: 2px 1px 3px black;">Price : {{ oneFeild.price }}</h4>        
+        
+    <a class="btn btn-info" routerLink="/feilds/{{oneFeild.id}}">More</a>
+</div>
