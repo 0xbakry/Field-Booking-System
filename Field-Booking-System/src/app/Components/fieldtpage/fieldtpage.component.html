@@ -1,0 +1,18 @@
+<div class="container-fluid" style="margin: 10px; margin-left: 50px;">
+    <h3 class="h3 " style="  font-size: 30px; color: #2f479e; margin-top: 100px; margin-bottom: 30px;" >Welcome to {{type}} fields </h3>
+  <div class="row flex-nowrap overflow-auto">
+  @for(field of fields; track field){
+     <div class="col mr-1" style="display: flex;">
+       <div class="card" style="width: 20rem;">
+         <img class="card-img-top" src={{field.img}} >
+          <div class="card-body">
+            <h5 class="card-title">{{field.name}}</h5>
+            <p class="card-text">Type: {{field.type}}</p>
+            <p class="card-text">Price:  {{ field.price  }}</p>
+            <a routerLink="/field" class="btn btn-primary">See Details</a>
+          </div>
+       </div>
+      </div>
+  }
+  </div>
+  </div>
