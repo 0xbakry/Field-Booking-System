@@ -1,0 +1,16 @@
+<div class="container-fluid  ">
+    <h3 class="h3 mb-5" style="  font-size: 35px; color: #2f479e" >Book now ! </h3>
+<div class="row flex-nowrap overflow-auto mb-5 d-flex justify-content-center">
+      @for(tp  of types; track tp.name)
+      {
+        <div class="col-md-2">
+          <div class="text-center">
+            <img src={{tp.img}} class="rounded-circle"  width="170" height="160">
+            <div class="mt-2">
+              <a (click)="onLinkClick(tp.name)" routerLink="/fieldtypes" style="font-size: 17px; color: #495889; text-decoration: none;">{{ tp.name }}</a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>

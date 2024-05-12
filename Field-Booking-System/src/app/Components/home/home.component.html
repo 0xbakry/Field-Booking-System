@@ -1,0 +1,21 @@
+<div class="container mt-5" style="overflow-y: auto;" >
+      <div class="col-md-14 d-flex justify-content-center">
+          <button class="arrow-btn" style=" color: #2f479e;" (click)="previousImage()">
+            <i class="bi bi-arrow-left"></i> 
+          </button>
+        <img [src]="images[imageIndex]" class="img-fluid" style="max-width: 100%; max-width: 90%;" alt="Description of the image">
+        <button class="arrow-btn" style=" color: #2f479e;" (click)="nextImage()">
+            <i class="bi bi-arrow-right"></i> 
+        </button>
+      </div>
+
+    <div class="row m-3">
+        <div class="col-md-12">
+          <h2 class="h2 text-center mt-4" style=" font-weight: bold; font-size: 50px; color: #2f479e;">Who we are?</h2>
+          <p class=" text-center "  style="  font-size: 20px; color: #495889;">Feilds Booking is an Egyptian sports brand aiming to establish an ecosystem for different types of players in Egypt. The company owns 15 varieties of courts in New Cairo. We strive to expand sports to the Egyptian market.</p>
+        </div>
+    </div>
+    <app-fieldtypes></app-fieldtypes>
+    <app-fieldcard></app-fieldcard>
+      
+</div>

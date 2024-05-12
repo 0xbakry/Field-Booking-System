@@ -1,0 +1,9 @@
+.nav-link{
+    color: #ebeff5;
+}
+.nav-link:hover{
+    color: #99aac3;
+}
+.nav-link::after{
+    color: #99aac3;
+}
