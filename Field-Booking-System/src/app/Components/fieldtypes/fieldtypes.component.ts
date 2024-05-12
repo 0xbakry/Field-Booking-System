@@ -21,7 +21,7 @@ export class FieldtypesComponent {
     {name: "Cricket Field",  img:"assets/img2.jpg"}
   ];
   onLinkClick(name: string) {
-    this.router.navigate(['/fielsType', name]);
+    this.router.navigate(['fieldtypes', name]);
   }
 
 }
