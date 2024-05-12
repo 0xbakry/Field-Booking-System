@@ -2,11 +2,34 @@
     <div style="display: flex; flex-wrap: wrap; flex-direction: row; justify-content: space-between; background-color: #2f479e; box-shadow: 0px 0.1px 8px 0px white;">
         <h3 style="text-align: start; color: #ebeff5; margin-left: 25px; margin-top: 10px;">Our Feilds</h3>
         <!-- TO DOOOO -->
-        <h3 style="text-align: start; color: #ebeff5; margin-right: 25px; margin-top: 10px;">SORT</h3>
+        <form style="text-align: start; color: #ebeff5; margin-right: 25px; margin-top: 10px;">
+            <select #selectBox (change)="sort(selectBox.value)">
+                <option value="reset">SORT</option>
+                <optgroup label="Sort By Price">
+                    <option value="Low To High">Low To High</option>
+                    <option value="High To Low">High To Low</option>
+                </optgroup>
+                <optgroup label="Sort By Type">
+                    <option value="Football">Football</option>
+                    <option value="Handball">Handball</option>
+                    <option value="Basketball">Basketball</option>
+                    <option value="Volleyball">Volleyball</option>
+                    <option value="Tennis">Tennis</option>
+                    <option value="Padel">Padel</option>
+                </optgroup>
+                <optgroup label="Reset">
+                    <option value="reset">Reset</option>
+                </optgroup>
+            </select>
+        </form>
+        
+        
+        
+
     </div>
     <div style="display: flex; flex-wrap: wrap; flex-direction: row; justify-content: space-between;"> 
-        @for (feild of feilds; track feild.id) {
-            <app-feild [oneFeild]="feild" style="margin:20px;"></app-feild>
-        }
+        <ng-container *ngFor="let field of filteredFields">
+            <app-feild [oneFeild]="field" style="margin:20px;"></app-feild>
+        </ng-container>
     </div>
 </div>
