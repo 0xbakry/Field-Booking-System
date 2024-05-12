@@ -16,7 +16,7 @@
         <span>Total Price: ${{ calculateTotalPrice() }}</span>
     </div>
     
-    <button class="btn btn-primary">Pay Now</button>
+    <button class="btn btn-primary" (click)="payNow()">Pay Now</button>
     <button class="btn btn-back" [routerLink]="['/profile']">Back</button>
   </div>
   

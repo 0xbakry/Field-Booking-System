@@ -43,4 +43,15 @@ export class BookingComponent implements OnInit {
   calculateTotalPrice(): number {
     return this.bookedFields.reduce((total, field) => total + field.price, 0);
   }
+
+  payNow(): void {
+    if(this.bookedFields.length > 0)
+      {
+        alert("Payment successful!");
+        this.bookedFields = [];
+      }
+      else {
+        alert("Please add fields first to your cart!");
+      }
+  }
 }
