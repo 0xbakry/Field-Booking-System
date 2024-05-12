@@ -37,7 +37,8 @@ export class LoginComponent {
             setTimeout(() => {
               this.router.navigate(['/']);
             }, 1000);
-            this.users.setUserId(res[0].id);
+            //this.users.setUserId(res[0].id);
+            this.users.setUser(res[0].id, res[0].username);
           }
           else {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Wrong email or password' });

@@ -5,15 +5,25 @@ interface User{
   id: string;
   email: string;
   password: string;
+  username: string;
 }
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    if(sessionStorage.getItem('isLogged') == 'true') {
+      this.isLogged = true;
+      this.userId = sessionStorage.getItem('id');
+      this.username = sessionStorage.getItem('username');
+    }
+  }
+  
   private url = "http://localhost:3000/users";
-  private userId: string | null = null;
+  private userId: any = "";
+  private username: any = "";
+  isLogged = false;
 
 
   loginUser(email: any, password: any) {
@@ -44,5 +54,32 @@ export class UsersService {
 
   getUserId(): string | null {
     return this.userId;
+  }
+
+  setUser(id:string, username:string) {
+    this.userId = id;
+    this.username = username;
+    sessionStorage.setItem('id', id);
+    sessionStorage.setItem('username', username);
+    sessionStorage.setItem('isLogged', 'true');
+    this.isLogged = true;
+  }
+
+  logOut() {
+    this.userId = '';
+    this.username = '';
+    sessionStorage.setItem('id', '');
+    sessionStorage.setItem('username', '');
+    sessionStorage.setItem('isLogged', 'false');
+    this.isLogged = false;
+  }
+
+  getUsername() {
+    return this.username;
+  }
+
+  // check if there is a user that is logged in
+  loginCheck() {
+    return this.isLogged;
   }
 }
