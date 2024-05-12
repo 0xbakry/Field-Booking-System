@@ -1,0 +1,28 @@
+{
+    "fields":[
+        {
+            "id":"1",
+            "name":"field1",
+            "price":100,
+            "type":"type1",
+            "available":true,
+            "img":"field1.jpg"
+        },
+        {
+            "id":"2",
+            "name":"field2",
+            "price":200,
+            "type":"type2",
+            "available":true,
+            "img":"field1.jpg"
+        },
+        {
+            "id":"3",
+            "name":"field3",
+            "price":300,
+            "type":"type3",
+            "available":true,
+            "img":"field1.jpg"
+        }
+    ]
+}

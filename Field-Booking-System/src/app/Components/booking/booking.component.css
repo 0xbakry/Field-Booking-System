@@ -1,0 +1,101 @@
+.bookings-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #0a1e5b;
+  }
+  
+  .bookings-container h2 {
+    color: #f7f2eb;
+    font-size: 30px;
+  }
+  
+  .field-card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .field-card img {
+    width: 150px; 
+    height: 150px;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  
+  .field-details {
+    flex-grow: 1;
+  }
+  
+  .field-details h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color:#ecc795;
+  }
+  
+  .field-details p {
+    margin-bottom: 5px;
+    color: #f3ddbe;
+  }
+  
+  .field-details p:last-child {
+    margin-bottom: 10px;
+  }
+
+  .field-name {
+    color:#f3ddbe;
+  }
+
+  .total-price {
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  
+  .total-price span {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #f9bf6e;
+    margin-left: 300px;
+  }
+  
+  .btn-primary {
+    margin-left: 350px;
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-primary, .btn-back {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-back {
+    margin-right: 300px; 
+    margin-top: -190px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-back:hover {
+  background-color: #0056b3;
+}
+  
+  
+  
