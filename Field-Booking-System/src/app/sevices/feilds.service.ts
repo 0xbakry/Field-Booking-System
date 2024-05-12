@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FeildComponent } from '../components/feild/feild.component';
+import { FeildComponent } from '../Components/feild/feild.component';
 import { Observable } from 'rxjs';
 
 @Injectable({
