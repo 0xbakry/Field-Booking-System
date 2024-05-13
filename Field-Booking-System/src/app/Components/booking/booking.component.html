@@ -3,7 +3,7 @@
     <div *ngFor="let field of bookedFields" class="field-card">
       <img src="assets/{{ field.img }}" alt="{{ field.name }}">
       <div class="field-details">
-        <h3><a [routerLink]="['/fields', 'field-details', field.id]" class="field-name">{{ field.name }}</a></h3>        
+        <h3><a routerLink="/fields/{{field.id}}"  class="field-name">{{ field.name }}</a></h3>        
         
         <!-- <h3><a [routerLink]="['/profile', 'favorites-fields']" class="field-name">{{ field.name }}</a></h3>         -->
 

@@ -76,8 +76,11 @@ export class BookingComponent implements OnInit {
   payNow(): void {
     if(this.bookedFields.length > 0)
       {
-        alert("Payment successful!");
         this.bookedFields = [];
+        for(let id of this.bookedFieldsID){
+          this.serviceF.returnFeild(id);
+        }
+        alert("Payment successful!");
       }
       else {
         alert("Please add fields first to your cart!");
