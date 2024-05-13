@@ -1,8 +1,9 @@
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { UsersService } from '../../sevices/users.service';
 
 @Component({
   selector: 'app-feild',
@@ -13,10 +14,16 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     CommonModule
   ],
+  providers:[UsersService],
   templateUrl: './feild.component.html',
   styleUrl: './feild.component.css'
 })
-export class FeildComponent {
+export class FeildComponent implements OnInit {
+  constructor(private serviceUs:UsersService){}
+  checkUser:any;
+  ngOnInit(){
+    this.checkUser=this.serviceUs.isLogged;
+  }
 
   isFavorite = false;
 
