@@ -1,18 +1,28 @@
 <div class="container-fluid">
-  <h3 class="h3 mb-4" style="  font-size: 30px; color: #2f479e" >Our top rated fields </h3>
+  <h3 class="h3 mb-4" style="  font-size: 30px; color: #2f479e" >Our top rated fields</h3>
 <div class="row flex-nowrap overflow-auto">
 @for(field of fields; track field){
-   <div class="col mr-1" style="display: flex;">
-     <div class="card" style="width: 20rem; height: 24rem;">
-       <img class="card-img-top" src="assets/{{field.img}}" >
-        <div class="card-body">
-          <h5 class="card-title" style="color: #2f479e; font-weight: bolder;">{{field.name}}</h5>
-          <p class="card-text"  style="color: #2f479e;"> <strong >Type:</strong> {{field.type}}</p>
-          <p class="card-text" style="color: #2f479e;"> <strong >Price:</strong>  {{ field.price  | currency:'EGP'}}</p>
-          <a routerLink="/fields/{{field.id}}" class="btn btn-primary" style="background-color:#0a1e5b ;">See Details</a>
+  <div class="col mr-1" style="display: flex;">
+    <div class="card" style="width: 20rem; height: 24rem;">
+        <div style="align-items: center; display: flex; justify-content: center; margin: 5px;">
+            <img class="card-img-top" src="assets/{{field.type}}.png" style="width: 200px;height: 200px;" class="img-thumbnail rounded-circle" >
         </div>
-     </div>
+       <div class="card-body">
+         <h5 class="card-title" style="color: #2f479e; font-weight: bolder;">{{field.name}}</h5>
+         <p class="card-text"  style="color: #2f479e;"> <strong >Type:</strong> {{field.type}}</p>
+         <p class="card-text" style="color: #2f479e;"> <strong >Price:</strong>  {{ field.price  | currency:'EGP'}}</p>
+         <div style="display: flex; justify-content: space-between;">
+             <a routerLink="/fields/{{field.id}}" class="btn btn-primary" style="background-color:#0a1e5b ;">See Details</a>
+             @if(isFavorite){
+                <button class="btn btn-danger" style="color: #ebeff5; font-size: 12px;"(click)="Favorite()">&#x2764;</button>
+            }
+            @else {
+                <button class="btn btn-danger" style="font-size: 12px;background-color: #ebeff5;color: black"(click)="Favorite()">&#x2764; </button>
+            }
+         </div>
+       </div>
     </div>
+   </div>
 }
 </div>
 </div>
