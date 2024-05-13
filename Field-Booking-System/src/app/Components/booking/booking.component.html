@@ -8,14 +8,14 @@
         
         <!-- <h3><a [routerLink]="['/profile', 'favorites-fields']" class="field-name">{{ field.name }}</a></h3>         -->
 
-        <p>Price: ${{ field.price }}</p>
+        <p>Price: {{ field.price | currency:'EGP'}}</p>
         <p>Type: {{ field.type }}</p>
       </div>
       <button type="button" class="btn btn-danger" (click)="removeBook(field.id)" >Delete</button>
     </div>
 
     <div class="total-price">
-        <span>Total Price: ${{ calculateTotalPrice() }}</span>
+        <span>Total Price: {{ calculateTotalPrice() | currency:'EGP' }}</span>
     </div>
     
     <button class="btn btn-primary" (click)="payNow()">Pay Now</button>
