@@ -14,11 +14,12 @@ import { RouterLink, RouterModule, Router } from '@angular/router';
 export class FieldtypesComponent {
   constructor(private router: Router) {}
   types:{name:string, type:string,  img:string}[]=[
-    {name: "Padel Fields", type:"Padel",  img:"assets/img.jpg" },
-    {name: "Basketball Fields", type:"Basketball", img:"assets/img2.jpg" },
-    {name: "Football Fields", type:"Football",  img:"assets/img3.jpg"},
-    {name: "Volleyball Fields", type:"Volleyball", img:"assets/img.jpg"},
-    {name: "Handball Field", type:"Handball",  img:"assets/img2.jpg"}
+    {name: "Padel Fields", type:"Padel",  img:"assets/Padel.png" },
+    {name: "Basketball Fields", type:"Basketball", img:"assets/Basketball.png" },
+    {name: "Football Fields", type:"Football",  img:"assets/Football.png"},
+    {name: "Volleyball Fields", type:"Volleyball", img:"assets/Volleyball.png"},
+    {name: "Handball Field", type:"Handball",  img:"assets/Handball.png"},
+    {name: "Tennis Field", type:"Tennis",  img:"assets/Tennis.png"},
   ];
   onLinkClick(name: string) {
     this.router.navigate(['fieldtypes', name]);

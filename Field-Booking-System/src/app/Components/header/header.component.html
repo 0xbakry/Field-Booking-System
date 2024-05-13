@@ -13,9 +13,6 @@
       @if(currentUser){
       <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="profile">Profile</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" routerLink="profile/bookings" >Bookings</a>
       </li>
       <li class="nav-item">
@@ -38,7 +35,9 @@
   @else{
     <ul class="navbar-nav ml-auto" style="position: relative; left: 60%;">
       <li class="nav-item">
-        <!-- <button (click)="logout()"> by</button> -->
+        <a class="nav-link" routerLink="profile">Profile</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" (click)="logout() " style="cursor: pointer; ">Logout</a>
       </li>
     </ul>

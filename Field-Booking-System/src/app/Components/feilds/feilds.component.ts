@@ -59,7 +59,11 @@ export class FeildsComponent implements OnInit {
       filtered.sort((a, b) => b.price - a.price);
     }
     else if (filter !== 'reset') {
-      filtered = filtered.filter(field => filter === field.type);
+      filtered = filtered.filter(field => filter === field.type).sort((a:any, b:any) => {
+        const numA = parseInt(a.name.match(/\d+/)[0]);
+        const numB = parseInt(b.name.match(/\d+/)[0]);
+        return numA - numB;
+    });
     }
   
     this.filteredFields = filtered;

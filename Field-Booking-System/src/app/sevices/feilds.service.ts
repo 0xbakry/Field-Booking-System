@@ -23,4 +23,8 @@ export class FeildsService {
     return this.http.get<FeildComponent[]>(this.DB_URL, { params });
   }
 
+  updateFeild(id: number, obj:any){
+    return this.http.patch(this.DB_URL +"/"+ id, obj);
+  }
+
 }

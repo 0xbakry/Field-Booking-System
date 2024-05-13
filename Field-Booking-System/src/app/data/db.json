@@ -6,7 +6,53 @@
       "type": "Football",
       "price": 200,
       "img": "Football.jpg",
-      "available": true
+      "available": true,
+      "slots": [
+        {
+          "time": 1,
+          "available": false
+        },
+        {
+          "time": 2,
+          "available": false
+        },
+        {
+          "time": 3,
+          "available": false
+        },
+        {
+          "time": 4,
+          "available": true
+        },
+        {
+          "time": 5,
+          "available": true
+        },
+        {
+          "time": 6,
+          "available": true
+        },
+        {
+          "time": 7,
+          "available": true
+        },
+        {
+          "time": 8,
+          "available": true
+        },
+        {
+          "time": 9,
+          "available": true
+        },
+        {
+          "time": 10,
+          "available": true
+        },
+        {
+          "time": 11,
+          "available": true
+        }
+      ]
     },
     {
       "id": "2",
