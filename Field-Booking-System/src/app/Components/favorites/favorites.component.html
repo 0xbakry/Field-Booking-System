@@ -1,10 +1,10 @@
 <div class="favorites-container">
     <h2>My Favorite Fields</h2>
     <div *ngFor="let field of favoriteFields" class="field-card">
-      <img [src]="'assets/Images/' + field.img" alt="{{ field.name }}">
+      <img [src]="'assets/' + field.img" alt="{{ field.name }}">
       <div class="field-details">
         <h3><a [routerLink]="['/fields', 'field-details', field.id]" class="field-name">{{ field.name }}</a></h3>        
-        <p>Price: ${{ field.price }}</p>
+        <p>Price: {{ field.price  | currency:'EGP' }}</p>
         <p>Type: {{ field.type }}</p>
       </div>
     </div>

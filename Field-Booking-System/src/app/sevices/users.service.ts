@@ -51,23 +51,6 @@ export class UsersService {
   getUser(id: any) {
     return this.http.get(this.url +"/"+ id )
   }
-  /////
-  // logout() {
-  //   localStorage.removeItem('currentUser');
-  // }
-  // // Check if user is logged in
-  // isLoggedIn(): boolean {
-  //   return !!localStorage.getItem('currentUser');
-  // }
-  // // Get current logged in user
-  // getCurrentUser() {
-  //   const currentUserString = localStorage.getItem('currentUser');
-  //   if (currentUserString) {
-  //     return JSON.parse(currentUserString);
-  //   } else {
-  //     return null;
-  //   }
-  // }
 
   setUserId(userId: string): void {
     this.userId = userId;
@@ -99,7 +82,6 @@ export class UsersService {
     return this.username;
   }
 
-  // check if there is a user that is logged in
   loginCheck() {
     return this.isLogged;
   }

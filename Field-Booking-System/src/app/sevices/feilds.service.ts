@@ -18,7 +18,6 @@ export class FeildsService {
     return this.http.get(this.DB_URL+"/"+id);
   }
   getFeildsByType(type: any): Observable<FeildComponent[]> {
-    //filter by type
     const params = new HttpParams().set('type', type);
     return this.http.get<FeildComponent[]>(this.DB_URL, { params });
   }
