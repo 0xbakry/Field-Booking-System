@@ -39,7 +39,7 @@ export class FeildsService {
     this.getFeildByID(id).subscribe((field: any) => {
       field.available=true;
       this.http.put(this.DB_URL + "/" + id, field).subscribe(response => {
-          console.log("Field occupied successfully", response);
+          console.log("Field freed successfully", response);
       }, error => {
           console.error("Error ", error);
       });

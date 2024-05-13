@@ -15,14 +15,9 @@ import { UsersService } from '../../sevices/users.service';
   styleUrl: './fieldcard.component.css'
 })
 export class FieldcardComponent implements OnInit {
-
-isFavorite = false;
+constructor(private service: FeildsService, private serviceUs: UsersService){}
 fields:any;
 checkUser:any;
-constructor(private service: FeildsService, private serviceUs: UsersService){}
-
-
-
 userid:any;
 user:any;
 favFields:any;
@@ -33,7 +28,7 @@ ngOnInit(){
       for(let i = 4 ; i<30 ; i++){
         this.fields.pop();
       }
-      console.log(this.fields);
+      console.log("look here plz",this.fields);
     },
     error:(err)=>{console.log(err)}
   })
@@ -43,7 +38,6 @@ ngOnInit(){
     next:(data)=>{
       this.user = data;      
       this.favFields=this.user.favourits;
-      console.log("hihihihihiihihi f",this.favFields); 
     },
     error:(err)=>{console.log(err)}
   })

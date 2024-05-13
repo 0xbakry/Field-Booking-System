@@ -27,6 +27,7 @@ export class FeildDetailsComponent implements OnInit{
   userId:any;
   feild:any;
   slot=false;
+  checkUser:any;
 
   constructor(myActivated:ActivatedRoute, private service:FeildsService, private serviceUser: UsersService, private router:Router){
     this.id = myActivated.snapshot.params["id"];
@@ -40,6 +41,7 @@ export class FeildDetailsComponent implements OnInit{
       error:(err)=>{console.log(err)}
     })
     this.userId=this.serviceUser.getUserId();
+    this.checkUser=this.serviceUser.isLogged;
   }
 
   book(){

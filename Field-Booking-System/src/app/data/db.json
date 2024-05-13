@@ -6,7 +6,7 @@
       "type": "Football",
       "price": 200,
       "img": "Football.jpg",
-      "available": false,
+      "available": true,
       "slots": [
         {
           "time": 1,
@@ -344,9 +344,7 @@
       "phone": "01039985762",
       "email": "sara@email.com",
       "password": "123",
-      "bookings": [
-        "1"
-      ],
+      "bookings": [],
       "favourits": []
     },
     {

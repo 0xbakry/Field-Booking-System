@@ -29,11 +29,11 @@
 
                   </div> -->
                 <div style="align-items: center; display: flex; justify-content: center;">
-                    @if(feild.available){
+                    @if(feild.available && checkUser){
                         <button class="btn btn-outline-dark" style="background-color: #ebeff5;margin-top: 10px;" (click)="book()">BOOK</button>
                         <!-- <a routerLink="/profile/bookings" class="btn btn-outline-dark" style="background-color: #ebeff5;margin-top: 10px;">BOOK</a> -->
                     }
-                    @else{
+                    @else if(checkUser){
                         <a class="btn btn-outline-dark" disabled style="background-color: Red;cursor: not-allowed; color: #ebeff5;margin-top: 10px;">BOOKED</a>
                     }
                 </div>
