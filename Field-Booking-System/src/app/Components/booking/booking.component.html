@@ -1,7 +1,7 @@
 <div class="bookings-container">
     <h2>My Bookings</h2>
     <div *ngFor="let field of bookedFields" class="field-card">
-      <img [src]="'assets/Images/' + field.img" alt="{{ field.name }}">
+      <img src="assets/{{ field.img }}" alt="{{ field.name }}">
       <div class="field-details">
         <h3><a [routerLink]="['/fields', 'field-details', field.id]" class="field-name">{{ field.name }}</a></h3>        
         
@@ -10,6 +10,7 @@
         <p>Price: ${{ field.price }}</p>
         <p>Type: {{ field.type }}</p>
       </div>
+      <button type="button" class="btn btn-danger" (click)="removeBook(field.id)" >Delete</button>
     </div>
 
     <div class="total-price">

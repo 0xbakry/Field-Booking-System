@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UsersService } from '../../sevices/users.service';
+import { FeildsService } from '../../sevices/feilds.service';
 
 @Component({
   selector: 'app-favorites',
@@ -13,43 +14,51 @@ import { UsersService } from '../../sevices/users.service';
     RouterModule
   ],
   providers: [
-    UsersService
+    UsersService,
+    FeildsService
   ],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.css'
 })
 export class FavoritesComponent implements OnInit{
   
-  favoriteFields: any[] = [];
-  user: any;
-  userId: string | null = null;
+
 
   constructor(
     private http: HttpClient,
-    private currUser: UsersService
-  ) 
-  { }
+    private serviceU: UsersService,
+    private serviceF:FeildsService
+  ) {}
+  userid:any;
+  fields:any;
+  favoriteFieldsID: any;
+  favoriteFields: any;
+  user: any;
+  ngOnInit(){
+    this.serviceF.getAllFeilds().subscribe({
+      next: (data) => {
+        this.fields = data;
 
-  ngOnInit(): void {
-    this.http.get<any>('http://localhost:3000/users').subscribe(
-      (userData) => {
-        this.user = userData[0];
-        this.userId = this.currUser.getUserId();
-        console.log("LOOOOOK: ", this.userId);
-        // userData.filter((u:any) => this.u.id.includes(this.currUser.getUserId()));
-
-        this.http.get<any>('http://localhost:3000/feilds').subscribe(
-          (fieldsData) => {
-            this.favoriteFields = fieldsData.filter((field: any) => this.user.favourits.includes(field.id));
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
       },
-      (error) => {
-        console.log(error);
-      }
-    );
+      error: (err) => { console.log("Error fetching fields"); }
+    });
+    this.userid=this.serviceU.getUserId();
+    this.serviceU.getUser(this.userid).subscribe({
+      next: (data) => {
+        this.user = data;
+        this.favoriteFieldsID=this.user.favourits;
+        console.log(this.user, this.user.favourits);
+        
+        this.favoriteFields = this.fields.filter((field: any) => this.favoriteFieldsID.includes(field.id));
+    
+        
+      },
+      error: (err) => { console.log("Error fetching user"); }
+    });
+  }
+  remove(idfield : any){
+    this.serviceU.removeFav(this.userid, idfield);
+    window.location.reload();
+    window.location.reload();
   }
 }

@@ -4,26 +4,25 @@ import { FeildsService } from '../../sevices/feilds.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UsersService } from '../../sevices/users.service';
 
 @Component({
   selector: 'app-fieldtpage',
   standalone: true,
   imports: [HttpClientModule, RouterModule, FormsModule, CommonModule],
-  providers:[FeildsService],
+  providers:[FeildsService, UsersService],
   templateUrl: './fieldtpage.component.html',
   styleUrl: './fieldtpage.component.css'
 })
 export class FieldtpageComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private service: FeildsService){
-  }
+  constructor(private route: ActivatedRoute, private service: FeildsService, private serviceUs: UsersService){}
 
-  isFavorite = false;
-  fields:any // fill field array from fields of specified type
+  fields:any 
   type:any;
-
-  Favorite() {
-    this.isFavorite = !this.isFavorite;
-  }
+  userid:any;
+  user:any;
+  favFields:any;
+  checkUser:any;
   ngOnInit(){
     this.route.params.subscribe(params => {
       this.type = params['type'];
@@ -39,6 +38,32 @@ export class FieldtpageComponent implements OnInit {
         console.log(data);
       },
       error:(err)=>{console.log("Error")}
-    })
+    });
+    this.userid=this.serviceUs.getUserId();
+    this.checkUser=this.serviceUs.isLogged;
+    this.serviceUs.getUser(this.userid).subscribe({
+      next:(data)=>{
+        this.user = data;      
+        this.favFields=this.user.favourits;
+        console.log("hihihihihiihihi f",this.favFields); 
+      },
+      error:(err)=>{console.log(err)}
+    });
+  }
+  Favorite(fieldid:any) {
+    console.log("before",fieldid, this.favFields);
+    if(!(this.favFields.includes(fieldid))){
+      this.favFields.push(fieldid);
+      this.serviceUs.addFav(this.userid,fieldid);
+      console.log("add f",this.favFields); 
+    }
+    else{
+      this.favFields = this.favFields.filter((id:any) => id !== fieldid);
+      this.serviceUs.removeFav(this.userid, fieldid);
+      console.log("remove f", this.favFields); 
+    }
   }
 }
+
+
+

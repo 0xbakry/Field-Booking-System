@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { catchError, map } from 'rxjs';
 
 interface User{
   id: string;
@@ -84,5 +84,50 @@ export class UsersService {
 
   loginCheck() {
     return this.isLogged;
+  }
+  addBooking(id: string, book:any) {
+    console.log(id, book);
+    this.getUser(id).subscribe((user: any) => {
+      user.bookings.push(book);
+      this.http.put(this.url + "/" + id, user).subscribe(response => {
+          console.log("Booking added successfully", response);
+      }, error => {
+          console.error("Error adding booking:", error);
+      });
+    });
+  }
+  removeBooking(id: string, book:any) {
+    console.log(id, book);
+    this.getUser(id).subscribe((user: any) => {
+      user.bookings = user.bookings.filter((id:any) => id !== book);
+      this.http.put(this.url + "/" + id, user).subscribe(response => {
+          console.log("Booking removed successfully", response);
+      }, error => {
+          console.error("Error removing booking:", error);
+      });
+    });
+  }
+  addFav(id: string, fav:any) {
+    console.log(id, fav);
+    this.getUser(id).subscribe((user: any) => {
+      user.favourits.push(fav);
+      this.http.put(this.url + "/" + id, user).subscribe(response => {
+          console.log("Favorite added successfully", fav,response);
+      }, error => {
+          console.error("Error adding Favorite:", error);
+      });
+    });
+  }
+  removeFav(id: string, fav:any) {
+    console.log(id, fav);
+    this.getUser(id).subscribe((user: any) => {
+      user.favourits = user.favourits.filter((id:any) => id !== fav);
+      // user.favourits.pop(fav);
+      this.http.put(this.url + "/" + id, user).subscribe(response => {
+          console.log("Favorite removed successfully", response);
+      }, error => {
+          console.error("Error removing Favorite:", error);
+      });
+    });
   }
 }

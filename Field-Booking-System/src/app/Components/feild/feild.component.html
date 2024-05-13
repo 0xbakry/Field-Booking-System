@@ -9,11 +9,11 @@
          <p class="card-text" style="color: #2f479e;"> <strong >Price:</strong>  {{ oneFeild.price  | currency:'EGP'}}</p>
          <div style="display: flex; justify-content: space-between;">
              <a routerLink="/fields/{{oneFeild.id}}" class="btn btn-primary" style="background-color:#0a1e5b ;">See Details</a>
-             @if(isFavorite && checkUser){
-                <button class="btn btn-danger" style="color: #ebeff5; font-size: 12px;"(click)="Favorite()">&#x2764;</button>
+             @if( (favFields.includes(oneFeild.id) && checkUser)){
+                <button class="btn btn-danger" style="color: #ebeff5; font-size: 12px;"(click)="Favorite(oneFeild.id)">&#x2764;</button>
             }
             @else if(checkUser) {
-                <button class="btn btn-danger" style="font-size: 12px;background-color: #ebeff5;color: black"(click)="Favorite()">&#x2764; </button>
+                <button class="btn btn-danger" style="font-size: 12px;background-color: #ebeff5;color: black"(click)="Favorite(oneFeild.id)">&#x2764; </button>
             }
          </div>
        </div>

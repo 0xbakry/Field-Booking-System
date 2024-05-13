@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FeildsService } from '../../sevices/feilds.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,9 +22,10 @@ checkUser:any;
 constructor(private service: FeildsService, private serviceUs: UsersService){}
 
 
-Favorite() {
-  this.isFavorite = !this.isFavorite;
-}
+
+userid:any;
+user:any;
+favFields:any;
 ngOnInit(){
   this.service.getAllFeilds().subscribe({
     next:(data)=>{
@@ -36,6 +37,29 @@ ngOnInit(){
     },
     error:(err)=>{console.log(err)}
   })
+  this.userid=this.serviceUs.getUserId();
   this.checkUser=this.serviceUs.isLogged;
+  this.serviceUs.getUser(this.userid).subscribe({
+    next:(data)=>{
+      this.user = data;      
+      this.favFields=this.user.favourits;
+      console.log("hihihihihiihihi f",this.favFields); 
+    },
+    error:(err)=>{console.log(err)}
+  })
+}
+Favorite(fieldid:any) {
+  console.log("before",fieldid, this.favFields);
+  if(!(this.favFields.includes(fieldid))){
+    this.favFields.push(fieldid);
+    this.serviceUs.addFav(this.userid,fieldid);
+    console.log("add f",this.favFields); 
+  }
+  else{
+    this.favFields = this.favFields.filter((id:any) => id !== fieldid);
+    this.serviceUs.removeFav(this.userid, fieldid);
+    console.log("remove f", this.favFields); 
+  }
 }
 }
+

@@ -25,5 +25,25 @@ export class FeildsService {
   updateFeild(id: number, obj:any){
     return this.http.patch(this.DB_URL +"/"+ id, obj);
   }
+  changeFeild(id: number) {
+    this.getFeildByID(id).subscribe((field: any) => {
+      field.available=false;
+      this.http.put(this.DB_URL + "/" + id, field).subscribe(response => {
+          console.log("Field occupied successfully", response);
+      }, error => {
+          console.error("Error ", error);
+      });
+    });
+  }
+  returnFeild(id: number) {
+    this.getFeildByID(id).subscribe((field: any) => {
+      field.available=true;
+      this.http.put(this.DB_URL + "/" + id, field).subscribe(response => {
+          console.log("Field occupied successfully", response);
+      }, error => {
+          console.error("Error ", error);
+      });
+    });
+  }
 
 }

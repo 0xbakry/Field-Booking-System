@@ -7,6 +7,7 @@
         <p>Price: {{ field.price  | currency:'EGP' }}</p>
         <p>Type: {{ field.type }}</p>
       </div>
+      <button type="button" class="btn btn-danger" (click)="remove(field.id)" >Remove</button>
     </div>
     <button class="btn btn-back" [routerLink]="['/profile']">Back</button>
   </div>
