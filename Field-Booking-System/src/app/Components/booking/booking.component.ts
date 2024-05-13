@@ -79,6 +79,7 @@ export class BookingComponent implements OnInit {
         this.bookedFields = [];
         for(let id of this.bookedFieldsID){
           this.serviceF.returnFeild(id);
+          this.serviceU.removeBooking(this.userid,id);
         }
         alert("Payment successful!");
       }
