@@ -1,3 +1,4 @@
+@if(checkUser){
 <div class="favorites-container">
     <h2>My Favorite Fields</h2>
     <div *ngFor="let field of favoriteFields" class="field-card">
@@ -11,4 +12,4 @@
     </div>
     <button class="btn btn-back" [routerLink]="['/profile']">Back</button>
   </div>
-  
+}

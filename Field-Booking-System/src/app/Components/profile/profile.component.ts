@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
 
   user: any;
   id:string | null | undefined;
-
+  logged:any;
   constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
@@ -35,5 +35,6 @@ export class ProfileComponent implements OnInit {
         console.log(error);
       }
     );
+    this.logged=this.userService.isLogged;
   }
 }

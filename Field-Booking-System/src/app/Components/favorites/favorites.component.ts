@@ -34,6 +34,7 @@ export class FavoritesComponent implements OnInit{
   favoriteFieldsID: any;
   favoriteFields: any;
   user: any;
+  checkUser:any;
   ngOnInit(){
     this.serviceF.getAllFeilds().subscribe({
       next: (data) => {
@@ -43,6 +44,7 @@ export class FavoritesComponent implements OnInit{
       error: (err) => { console.log("Error fetching fields"); }
     });
     this.userid=this.serviceU.getUserId();
+    this.checkUser=this.serviceU.isLogged;
     this.serviceU.getUser(this.userid).subscribe({
       next: (data) => {
         this.user = data;

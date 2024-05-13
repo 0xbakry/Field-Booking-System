@@ -24,7 +24,7 @@ export class BookingComponent implements OnInit {
   fields:any;
   user: any;
   userid:any;
-
+  checkUser:any;
   constructor(private serviceF: FeildsService, private serviceU:UsersService) { }
 
   ngOnInit(){
@@ -51,6 +51,7 @@ export class BookingComponent implements OnInit {
       error: (err) => { console.log("Error fetching fields"); }
     });
     this.userid=this.serviceU.getUserId();
+    this.checkUser=this.serviceU.isLogged;
     this.serviceU.getUser(this.userid).subscribe({
       next: (data) => {
         this.user = data;
