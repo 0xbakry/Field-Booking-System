@@ -29,7 +29,9 @@
     </div>
     <div style="display: flex; flex-wrap: wrap; flex-direction: row; justify-content: flex-start;"> 
         <ng-container *ngFor="let field of filteredFields">
-            <app-feild [oneFeild]="field" style="margin:20px;"></app-feild>
+            <div class="col mr-1" style="display: flex;">
+                <app-feild [oneFeild]="field" style="margin:20px;"></app-feild>
+            </div>
         </ng-container>
     </div>
 </div>

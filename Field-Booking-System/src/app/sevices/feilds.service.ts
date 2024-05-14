@@ -25,6 +25,7 @@ export class FeildsService {
   updateFeild(id: number, obj:any){
     return this.http.patch(this.DB_URL +"/"+ id, obj);
   }
+
   changeFeild(id: number) {
     this.getFeildByID(id).subscribe((field: any) => {
       field.available=false;
@@ -35,9 +36,12 @@ export class FeildsService {
       });
     });
   }
-  returnFeild(id: number) {
-    this.getFeildByID(id).subscribe((field: any) => {
+
+  returnFeild(id:number , slot:any) {
+    this.getFeildByID(id).subscribe((field: any) => {      
+      field.slots[slot-1].available=true;
       field.available=true;
+
       this.http.put(this.DB_URL + "/" + id, field).subscribe(response => {
           console.log("Field freed successfully", response);
       }, error => {

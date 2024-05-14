@@ -85,10 +85,12 @@ export class UsersService {
   loginCheck() {
     return this.isLogged;
   }
+
   addBooking(id: string, book:any) {
-    console.log(id, book);
     this.getUser(id).subscribe((user: any) => {
-      user.bookings.push(book);
+      console.log("from user service " + typeof(book));
+      console.log("from user service " + book);
+      user.booking.push(book);
       this.http.put(this.url + "/" + id, user).subscribe(response => {
           console.log("Booking added successfully", response);
       }, error => {
@@ -96,10 +98,15 @@ export class UsersService {
       });
     });
   }
+
   removeBooking(id: string, book:any) {
-    console.log(id, book);
+    console.log(book);
+    
     this.getUser(id).subscribe((user: any) => {
-      user.bookings = user.bookings.filter((id:any) => id !== book);
+      // console.log("FROm servise1 "+user.booking);
+      user.booking = user.booking.filter((obj: any) => !this.isEqual(obj, book));
+      // console.log("FROm servise2 "+user.booking);
+      
       this.http.put(this.url + "/" + id, user).subscribe(response => {
           console.log("Booking removed successfully", response);
       }, error => {
@@ -107,6 +114,11 @@ export class UsersService {
       });
     });
   }
+
+  isEqual(obj1: any, obj2: any): boolean {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+  }
+
   addFav(id: string, fav:any) {
     console.log(id, fav);
     this.getUser(id).subscribe((user: any) => {

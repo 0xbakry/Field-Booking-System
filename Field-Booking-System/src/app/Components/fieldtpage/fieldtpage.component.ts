@@ -5,11 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UsersService } from '../../sevices/users.service';
+import { FeildComponent } from '../feild/feild.component';
 
 @Component({
   selector: 'app-fieldtpage',
   standalone: true,
-  imports: [HttpClientModule, RouterModule, FormsModule, CommonModule],
+  imports: [HttpClientModule, RouterModule, FormsModule, CommonModule,FeildComponent],
   providers:[FeildsService, UsersService],
   templateUrl: './fieldtpage.component.html',
   styleUrl: './fieldtpage.component.css'

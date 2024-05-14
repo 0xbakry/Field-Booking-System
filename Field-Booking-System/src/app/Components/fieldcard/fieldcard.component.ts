@@ -5,11 +5,12 @@ import { FeildsService } from '../../sevices/feilds.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { UsersService } from '../../sevices/users.service';
+import { FeildComponent } from '../feild/feild.component';
 
 @Component({
   selector: 'app-fieldcard',
   standalone: true,
-  imports: [FormsModule, CommonModule, HttpClientModule, RouterModule],
+  imports: [FormsModule, CommonModule, HttpClientModule, RouterModule,FeildComponent],
   providers : [FeildsService, UsersService],
   templateUrl: './fieldcard.component.html',
   styleUrl: './fieldcard.component.css'

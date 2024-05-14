@@ -26,8 +26,11 @@ export class FeildDetailsComponent implements OnInit{
   id=0;
   userId:any;
   feild:any;
-  slot=false;
+  first=false;
+  time=0;
+  obj:any;
   checkUser:any;
+  booked:number[]=[];
 
   constructor(myActivated:ActivatedRoute, private service:FeildsService, private serviceUser: UsersService, private router:Router){
     this.id = myActivated.snapshot.params["id"];
@@ -44,36 +47,55 @@ export class FeildDetailsComponent implements OnInit{
     this.checkUser=this.serviceUser.isLogged;
   }
 
-  book(){
-   this.serviceUser.addBooking(this.userId, this.id);
-   this.service.changeFeild(this.feild.id);
-   this.router.navigate(['/profile/bookings'], { replaceUrl: true }).then(() => {
-    window.location.reload();
-    window.location.reload();
-  });
-  //  this.router.navigate(['/profile/bookings']);
+  change(obj:any){
+    this.first=false;
+    this.time=0;
   }
-  // WILL BE CONTINUE
-  // cickSlot(){
-  //   this.slot = !this.slot;
-  // }
 
-  // slot(obj:any){
-  //   this.book=true;
-  //   for(let i = 0 ;i<this.feild.slots.length;i++){
-  //     if(this.feild.slots[i] === obj){
-  //       console.log(this.feild.slots[i]);
-  //       this.feild.slots[i].available=false;
-  //       console.log(this.feild.slots[i]);
-  //     }
-  //   }
-  //   this.service.updateFeild(this.id,this.feild).subscribe({
-  //     next:(data)=>{
-  //       console.log(data);
-  //     },
-  //     error:(err)=>{console.log(err)}
-  //   })
-  // }
+  slot(obj:any){
+    this.first=true;
+    this.time = obj.time;
+    this.obj=obj;
+  }
 
+
+  async book(){
+    if(this.first){
+      for(let i = 0 ;i<this.feild.slots.length;i++){
+            if(this.feild.slots[i] === this.obj){
+              this.feild.slots[i].available=false;
+            }
+      }
+      
+      if(!this.checkFill()){
+        this.feild.available=false;
+      }
+
+      this.service.updateFeild(this.id,this.feild).subscribe({
+      next:(data)=>{
+      },
+      error:(err)=>{console.log(err)}
+    })
+
+      this.serviceUser.addBooking(this.userId, {"id":this.id,"slot":this.time});
+
+      this.router.navigate(['/profile/bookings'], { replaceUrl: true}).then(() => {
+        window.location.reload();
+      });
+    }
+    else{
+      alert("Please Choose Slot to be bokked ^_^ ");
+    }
+    
+   }
+
+  checkFill(){
+    for(let i = 0 ;i<this.feild.slots.length;i++){
+      if(this.feild.slots[i].available){
+        return true;
+      }
+    }
+      return false;
+ }
 
 }

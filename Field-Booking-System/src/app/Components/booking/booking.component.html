@@ -1,24 +1,28 @@
 @if(checkUser){
 <div class="bookings-container">
     <h2>My Bookings</h2>
-    <div *ngFor="let field of bookedFields" class="field-card">
-      <img src="assets/{{ field.img }}" alt="{{ field.name }}">
-      <div class="field-details">
-        <h3><a routerLink="/fields/{{field.id}}"  class="field-name">{{ field.name }}</a></h3>        
-        
-        <!-- <h3><a [routerLink]="['/profile', 'favorites-fields']" class="field-name">{{ field.name }}</a></h3>         -->
-
-        <p>Price: {{ field.price | currency:'EGP'}}</p>
-        <p>Type: {{ field.type }}</p>
-      </div>
-      <button type="button" class="btn btn-danger" (click)="removeBook(field.id)" >Delete</button>
+    <div>
+      <ng-container *ngFor="let field of fields">
+        <ng-container *ngFor="let id of bookedFieldsID">
+          @if(id.id === field.id){
+            <div class="field-card">
+              <img src="assets/{{ field.img }}" alt="{{ field.name }}">
+              <div class="field-details">
+                <p>Field: {{field.name}}</p>
+                <p>Slot: {{id.slot}}:pm</p>
+                <p>Price: <b style="color: white;">{{ field.price | currency:'EGP'}}</b></p>
+                <p>Type: {{ field.type }}</p>
+              </div>
+              <div style="align-items: center; display: flex;flex-direction: column;">
+                <button type="button" class="btn btn-success" (click)="payORdelete(field.id,id.slot)" >Pay Now</button>
+                <br>
+                <button type="button" class="btn btn-danger" (click)="payORdelete(field.id,id.slot)" >Delete</button>
+              </div>
+            </div>
+            }
+        </ng-container>
+      </ng-container>
     </div>
-
-    <div class="total-price">
-        <span>Total Price: {{ calculateTotalPrice() | currency:'EGP' }}</span>
-    </div>
-    
-    <button class="btn btn-primary" (click)="payNow()">Pay Now</button>
     <button class="btn btn-back" [routerLink]="['/profile']">Back</button>
   </div>
 }
