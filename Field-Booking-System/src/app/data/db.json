@@ -10,11 +10,11 @@
       "slots": [
         {
           "time": 1,
-          "available": true
+          "available": false
         },
         {
           "time": 2,
-          "available": true
+          "available": false
         },
         {
           "time": 3,
@@ -22,11 +22,11 @@
         },
         {
           "time": 4,
-          "available": true
+          "available": false
         },
         {
           "time": 5,
-          "available": true
+          "available": false
         },
         {
           "time": 6,
@@ -68,7 +68,7 @@
         },
         {
           "time": 2,
-          "available": true
+          "available": false
         },
         {
           "time": 3,
@@ -76,7 +76,7 @@
         },
         {
           "time": 4,
-          "available": true
+          "available": false
         },
         {
           "time": 5,
@@ -1628,7 +1628,7 @@
       "email": "test1@gmail.com",
       "password": "hashedPass",
       "phone": "0111111",
-      "booking": [],
+      "bookings": [],
       "favourits": []
     },
     {
@@ -1637,7 +1637,7 @@
       "email": "test2@gmail.com",
       "password": "hashedPass",
       "phone": "0111111",
-      "booking": [],
+      "bookings": [],
       "favourits": []
     },
     {
@@ -1646,7 +1646,7 @@
       "email": "test3@gmail.com",
       "password": "hashedPass",
       "phone": "0111111",
-      "booking": [],
+      "bookings": [],
       "favourits": []
     },
     {
@@ -1655,7 +1655,7 @@
       "email": "test4@gmail.com",
       "password": "hashedPass",
       "phone": "0111111",
-      "booking": [],
+      "bookings": [],
       "favourits": [
         "1",
         "2"
@@ -1694,8 +1694,15 @@
       "phone": "01028355543",
       "email": "sayed@ejada.com",
       "password": "123",
-      "bookings": [],
-      "favourits": []
+      "bookings": [
+        {
+          "id": "2",
+          "slot": 4
+        }
+      ],
+      "favourits": [
+        "1"
+      ]
     }
   ]
 }

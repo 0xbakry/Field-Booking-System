@@ -66,7 +66,7 @@ export class FeildDetailsComponent implements OnInit{
               this.feild.slots[i].available=false;
             }
       }
-      
+
       if(!this.checkFill()){
         this.feild.available=false;
       }
@@ -79,6 +79,8 @@ export class FeildDetailsComponent implements OnInit{
 
       this.serviceUser.addBooking(this.userId, {"id":this.id,"slot":this.time});
 
+      await this.sleep(2000);
+
       this.router.navigate(['/profile/bookings'], { replaceUrl: true}).then(() => {
         window.location.reload();
       });
@@ -88,6 +90,10 @@ export class FeildDetailsComponent implements OnInit{
     }
     
    }
+
+  sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
   checkFill(){
     for(let i = 0 ;i<this.feild.slots.length;i++){

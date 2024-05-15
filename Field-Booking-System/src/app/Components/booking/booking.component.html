@@ -14,9 +14,9 @@
                 <p>Type: {{ field.type }}</p>
               </div>
               <div style="align-items: center; display: flex;flex-direction: column;">
-                <button type="button" class="btn btn-success" (click)="payORdelete(field.id,id.slot)" >Pay Now</button>
+                <button type="button" class="btn btn-success" (click)="Pay(field.id,id.slot)" >Pay Now</button>
                 <br>
-                <button type="button" class="btn btn-danger" (click)="payORdelete(field.id,id.slot)" >Delete</button>
+                <button type="button" class="btn btn-danger" (click)="Delete(field.id,id.slot)" >Delete</button>
               </div>
             </div>
             }

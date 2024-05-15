@@ -34,7 +34,7 @@ export class BookingComponent implements OnInit {
     this.serviceU.getUser(this.userid).subscribe({
       next: (data1) => {
         this.user = data1;
-        this.bookedFieldsID=this.user.booking; 
+        this.bookedFieldsID=this.user.bookings; 
         this.serviceF.getAllFeilds().subscribe({
           next: (data2) => {
             this.fields = data2;
@@ -52,9 +52,16 @@ export class BookingComponent implements OnInit {
     });
   }
 
-  payORdelete(id:any , slot:any): void{
+  Pay(id:any , slot:any): void{
+    this.serviceU.removeBooking(this.userid,{"id":id,"slot":slot});
+    // this.serviceF.returnFeild(id,slot);
+    window.location.reload();
+  }
+
+  Delete(id:any , slot:any): void{
     this.serviceU.removeBooking(this.userid,{"id":id,"slot":slot});
     this.serviceF.returnFeild(id,slot);
     window.location.reload();
   }
+
 }

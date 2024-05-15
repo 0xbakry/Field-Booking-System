@@ -88,9 +88,12 @@ export class UsersService {
 
   addBooking(id: string, book:any) {
     this.getUser(id).subscribe((user: any) => {
-      console.log("from user service " + typeof(book));
-      console.log("from user service " + book);
-      user.booking.push(book);
+      // console.log("from user service " + typeof(book));
+      // console.log("from user service " + user.booking);
+      user.bookings.push(book);
+      // console.log("from user service3 " + user.booking);
+
+
       this.http.put(this.url + "/" + id, user).subscribe(response => {
           console.log("Booking added successfully", response);
       }, error => {
@@ -104,7 +107,7 @@ export class UsersService {
     
     this.getUser(id).subscribe((user: any) => {
       // console.log("FROm servise1 "+user.booking);
-      user.booking = user.booking.filter((obj: any) => !this.isEqual(obj, book));
+      user.bookings = user.bookings.filter((obj: any) => !this.isEqual(obj, book));
       // console.log("FROm servise2 "+user.booking);
       
       this.http.put(this.url + "/" + id, user).subscribe(response => {
