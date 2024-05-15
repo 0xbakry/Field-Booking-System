@@ -9,6 +9,7 @@ import { FieldtpageComponent } from './Components/fieldtpage/fieldtpage.componen
 import { HomeComponent } from './Components/home/home.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
+import { ErrorComponent } from './Components/error/error.component';
 
 export const routes: Routes = [
     {path:"",component:HomeComponent},
@@ -24,6 +25,7 @@ export const routes: Routes = [
     {path: "login", component: LoginComponent},
     {path: "register", component: RegisterComponent},
     {path: "update/:id", component: UpdateComponent},
+    {path: "**", component: ErrorComponent}
 
 ];
 

@@ -1,32 +1,41 @@
-import { Component } from '@angular/core';
+import { UsersService } from './../../sevices/users.service';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators , ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { UsersService } from '../../sevices/users.service';
+import { CommonModule } from '@angular/common';
+// import { UsersService } from '../../sevices/users.service';
 
 @Component({
   selector: 'app-update',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, HttpClientModule, RouterOutlet, ToastModule],
+  imports: [ReactiveFormsModule, RouterModule, HttpClientModule, RouterOutlet, ToastModule,CommonModule],
   providers: [UsersService, MessageService],
   templateUrl: './update.component.html',
   styleUrl: './update.component.scss'
 })
-export class UpdateComponent {
+export class UpdateComponent implements OnInit{
   
   constructor(private users: UsersService, private activeRouter: ActivatedRoute, private router: Router, private messageService: MessageService){
-    this.id = this.activeRouter.snapshot.params["id"];
+    // this.id = this.activeRouter.snapshot.params["id"];
   }
 
-  id: string;
+  id: any;
   user: any;
+  checkUser:any;
 
   ngOnInit(): void {
+    this.checkUser=this.users.isLogged;
+
+
+    this.id = this.users.getUserId();
+
     this.users.getUser(this.id).subscribe({
       next:(res)=>{
         this.user = res
+        // console.log("fron onintii  " + this.user.email);
         this.form
         .setValue({
             username: this.user.username,

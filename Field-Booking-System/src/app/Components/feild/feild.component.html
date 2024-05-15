@@ -1,13 +1,13 @@
-<div class="card" style="width: 20rem; height: 24rem;">
+<div class="card" style="width: 20rem; height: 24rem; background-color: #0a1e5b;">
     <div style="align-items: center; display: flex; justify-content: center; margin: 5px;">
         <img class="card-img-top" src="assets/{{oneFeild.img}}" style="width: 300px;height: 200px;" >
     </div>
     <div class="card-body">
-        <h5 class="card-title" style="color: #2f479e; font-weight: bolder;">{{oneFeild.name}}</h5>
-        <p class="card-text"  style="color: #2f479e;"> <strong >Type:</strong> {{oneFeild.type}}</p>
-        <p class="card-text" style="color: #2f479e;"> <strong >Price:</strong>  {{ oneFeild.price  | currency:'EGP'}}</p>
+        <h5 class="card-title" style="color: #ebeff5; font-weight: bolder;">{{oneFeild.name}}</h5>
+        <p class="card-text"  style="color: #ebeff5;"> <strong >Type:</strong> {{oneFeild.type}}</p>
+        <p class="card-text" style="color: #ebeff5;"> <strong >Price:</strong>  {{ oneFeild.price  | currency:'EGP'}}</p>
         <div style="display: flex; justify-content: space-between;">
-            <a routerLink="/fields/{{oneFeild.id}}" class="btn btn-primary" style="background-color:#0a1e5b ;">See Details</a>
+            <a routerLink="/fields/{{oneFeild.id}}" class="btn btn-primary" style="background-color:#ebeff5 ;color :#0a1e5b">See Details</a>
             @if (checkUser ) {
                 @if(favFields && (favFields.includes(oneFeild.id))){
                     <button class="btn btn-danger" style="color: #ebeff5; font-size: 12px;"(click)="Favorite(oneFeild.id)">&#x2764;</button>

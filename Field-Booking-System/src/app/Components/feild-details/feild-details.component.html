@@ -1,6 +1,6 @@
 @if (feild) {
     <div style="display: flex; flex-direction: column; align-items: center;">
-        <div style="background-color: #2f479e; width: 800px; margin: 15px; padding: 15px; box-shadow: 0px 1px 15px 0px white;border-radius: 15px;">
+        <div style="background-color: #0a1e5b; width: 800px; margin: 15px; padding: 15px; box-shadow: 0px 1px 15px 0px white;border-radius: 15px;">
             <div  style="display: flex; flex-direction: row-reverse;">
                 <a routerLink="/fields" class="btn btn-danger" style="color: #ebeff5;"><b>x</b></a>
             </div>
@@ -44,7 +44,7 @@
               </div>
             <div style="align-items: center; display: flex; justify-content: center;">
                 @if(feild.available && checkUser){
-                    <button class="btn btn-outline-dark" style="background-color: #ebeff5;margin-top: 10px;" (click)="book()">BOOK</button>
+                    <button class="btn btn-outline-dark" style="background-color: #ebeff5;margin-top: 10px; color: #0a1e5b;" (click)="book()">BOOK</button>
                     <!-- <a routerLink="/profile/bookings" class="btn btn-outline-dark" style="background-color: #ebeff5;margin-top: 10px;">BOOK</a> -->
                 }
                 @else if(checkUser){
@@ -54,11 +54,11 @@
         </div>
 </div>
 
-<div style="text-align: center;">
-    <div style="border: 2px solid #2f479e; margin: 10px;"></div>
-    <h3 class="h2 text-center" style=" font-weight: bold; color: #2f479e;">Description</h3>
-    <div style="border: 2px solid #2f479e; margin: 10px;"></div>
-    <p style="font-size: 20px; color: #495889; text-align: start; margin: 25px;">
+<div style="text-align: center; background-color: #2f479e; padding: 1px;">
+    <div style="border: 2px solid #ebeff5; margin: 10px;"></div>
+    <h3 class="h2 text-center" style=" font-weight: bold; color: #ebeff5;">Description</h3>
+    <div style="border: 2px solid #ebeff5; margin: 10px;"></div>
+    <p style="font-size: 20px; color: #ebeff5; text-align: start; margin: 25px;">
         
         Welcome to <b>{{feild.name}}</b>, <br><br> where the thrill of the game meets the comfort of community! Our dynamic field is the perfect canvas for <b>{{feild.type}}</b> enthusiasts to showcase their skills and share unforgettable moments with friends. <br>
         

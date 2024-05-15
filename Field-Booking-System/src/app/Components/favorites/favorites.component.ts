@@ -36,28 +36,38 @@ export class FavoritesComponent implements OnInit{
   user: any;
   checkUser:any;
   ngOnInit(){
+
+    this.userid=this.serviceU.getUserId();
+    this.checkUser=this.serviceU.isLogged;
+    
     this.serviceF.getAllFeilds().subscribe({
       next: (data) => {
         this.fields = data;
 
+        this.serviceU.getUser(this.userid).subscribe({
+          next: (data) => {
+            this.user = data;
+            this.favoriteFieldsID=this.user.favourits;
+            console.log(this.user, this.user.favourits);
+            
+            this.favoriteFields = this.fields.filter((field: any) => this.favoriteFieldsID.includes(field.id));
+    
+          // window.location.reload();
+            
+          },
+          error: (err) => { console.log("Error fetching user"); }
+        });
+
+
       },
       error: (err) => { console.log("Error fetching fields"); }
     });
-    this.userid=this.serviceU.getUserId();
-    this.checkUser=this.serviceU.isLogged;
-    this.serviceU.getUser(this.userid).subscribe({
-      next: (data) => {
-        this.user = data;
-        this.favoriteFieldsID=this.user.favourits;
-        console.log(this.user, this.user.favourits);
-        
-        this.favoriteFields = this.fields.filter((field: any) => this.favoriteFieldsID.includes(field.id));
+
+ 
+
     
-        
-      },
-      error: (err) => { console.log("Error fetching user"); }
-    });
   }
+
   remove(idfield : any){
     this.serviceU.removeFav(this.userid, idfield);
     window.location.reload();

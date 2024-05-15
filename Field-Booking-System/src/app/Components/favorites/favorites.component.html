@@ -1,12 +1,12 @@
-@if(checkUser){
+@if(checkUser && favoriteFields){
 <div class="favorites-container">
     <h2>My Favorite Fields</h2>
     <div *ngFor="let field of favoriteFields" class="field-card">
       <img [src]="'assets/' + field.img" alt="{{ field.name }}">
       <div class="field-details">
-        <h3><a routerLink="/fields/{{field.id}}"  class="field-name">{{ field.name }}</a></h3>        
-        <p>Price: {{ field.price  | currency:'EGP' }}</p>
-        <p>Type: {{ field.type }}</p>
+        <p><b>Filed</b>: <a routerLink="/fields/{{field.id}}"  class="field-name" style="color: #ebeff5; text-decoration: none;">{{ field.name }}</a></p>
+        <p><b>Price</b>: <b style="color: white;">{{ field.price | currency:'EGP'}}</b></p>
+        <p><b>Type</b>: {{ field.type }}</p>
       </div>
       <button type="button" class="btn btn-danger" (click)="remove(field.id)" >Remove</button>
     </div>

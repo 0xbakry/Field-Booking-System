@@ -8,10 +8,10 @@
             <div class="field-card">
               <img src="assets/{{ field.img }}" alt="{{ field.name }}">
               <div class="field-details">
-                <p>Field: {{field.name}}</p>
-                <p>Slot: {{id.slot}}:pm</p>
-                <p>Price: <b style="color: white;">{{ field.price | currency:'EGP'}}</b></p>
-                <p>Type: {{ field.type }}</p>
+                <p><b>Filed</b>: <a routerLink="/fields/{{field.id}}"  class="field-name" style="color: #ebeff5; text-decoration: none;">{{ field.name }}</a></p>
+                <p><b>Slot</b>: {{id.slot}}:pm</p>
+                <p><b>Price</b>: <b style="color: white;">{{ field.price | currency:'EGP'}}</b></p>
+                <p><b>Type</b>: {{ field.type }}</p>
               </div>
               <div style="align-items: center; display: flex;flex-direction: column;">
                 <button type="button" class="btn btn-success" (click)="Pay(field.id,id.slot)" >Pay Now</button>

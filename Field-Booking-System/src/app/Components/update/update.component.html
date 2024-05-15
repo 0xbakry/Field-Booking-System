@@ -1,16 +1,19 @@
-<div class="container">
+@if(user){
+    <div class="container">
 
-    <img src = "./assets/profile.png">
-    <form [formGroup]="form" (ngSubmit)="submit()">
-        <input type="text" name="username" placeholder="username" formControlName = "username">
-        <input type="text" name="phone" placeholder="phone number" formControlName = "phone">
-        <input type="email" name="email" placeholder="email" formControlName = "email">
-        <button>Update</button>
-    </form>
-
+        <img src = "./assets/profile.png">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <input type="text" name="username" placeholder="username" formControlName = "username">
+            <input type="text" name="phone" placeholder="phone number" formControlName = "phone">
+            <input type="email" name="email" placeholder="email" formControlName = "email">
+            <button>Update</button>
+        </form>
     
-    <p-toast />
-
-</div>
-
+        
+        <p-toast />
+    
+    </div>
+    
+    
+}
 

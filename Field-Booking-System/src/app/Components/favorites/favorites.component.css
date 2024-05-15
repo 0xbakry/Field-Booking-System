@@ -38,10 +38,10 @@
   }
   
   .field-details p {
+    font-size: 20px;
     margin-bottom: 5px;
-    color: #f3ddbe;
+    color: #ebeff5;
   }
-
   .field-details p:last-child {
     margin-bottom: 10px;
   }
