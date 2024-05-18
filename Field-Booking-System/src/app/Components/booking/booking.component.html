@@ -1,6 +1,9 @@
 @if(checkUser){
 <div class="bookings-container">
+  <div style="display: flex; justify-content: space-between;">
     <h2>My Bookings</h2>
+    <h4 class="p-2 bg-warning text-white rounded">Total = {{ total | currency:'EGP'}}</h4>
+  </div>
     <div>
       <ng-container *ngFor="let field of fields">
         <ng-container *ngFor="let id of bookedFieldsID">
