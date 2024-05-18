@@ -46,7 +46,7 @@ export class FieldtpageComponent implements OnInit {
       next:(data)=>{
         this.user = data;      
         this.favFields=this.user.favourits;
-        console.log("hihihihihiihihi f",this.favFields); 
+       
       },
       error:(err)=>{console.log(err)}
     });

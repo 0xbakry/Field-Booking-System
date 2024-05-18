@@ -10,27 +10,27 @@
       "slots": [
         {
           "time": 1,
-          "available": false
+          "available": true
         },
         {
           "time": 2,
-          "available": false
+          "available": true
         },
         {
           "time": 3,
-          "available": false
+          "available": true
         },
         {
           "time": 4,
-          "available": false
+          "available": true
         },
         {
           "time": 5,
-          "available": false
+          "available": true
         },
         {
           "time": 6,
-          "available": false
+          "available": true
         },
         {
           "time": 7,
@@ -64,11 +64,11 @@
       "slots": [
         {
           "time": 1,
-          "available": false
+          "available": true
         },
         {
           "time": 2,
-          "available": false
+          "available": true
         },
         {
           "time": 3,
@@ -84,7 +84,7 @@
         },
         {
           "time": 6,
-          "available": true
+          "available": false
         },
         {
           "time": 7,
@@ -92,7 +92,7 @@
         },
         {
           "time": 8,
-          "available": true
+          "available": false
         },
         {
           "time": 9,
@@ -142,7 +142,7 @@
         },
         {
           "time": 7,
-          "available": true
+          "available": false
         },
         {
           "time": 8,
@@ -1695,9 +1695,17 @@
       "email": "sayed@ejada.com",
       "password": "123",
       "bookings": [],
+      "favourits": []
+    },
+    {
+      "id": "7c42",
+      "username": "sasa",
+      "phone": "01789654387",
+      "email": "sa-7so@hotmail.com",
+      "password": "123",
+      "bookings": [],
       "favourits": [
-        "3",
-        "4"
+        "12"
       ]
     }
   ]

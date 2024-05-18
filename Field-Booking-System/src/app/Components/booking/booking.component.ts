@@ -39,7 +39,7 @@ export class BookingComponent implements OnInit {
         this.serviceF.getAllFeilds().subscribe({
           next: (data2) => {
             this.fields = data2;
-
+                        
             for(let i = 0 ; i<this.bookedFieldsID.length ;i++){
               for(let j=0 ; j<this.fields.length ;j++){
                   if(this.bookedFieldsID[i].id==this.fields[j].id) {
@@ -55,12 +55,12 @@ export class BookingComponent implements OnInit {
     });
   }
 
-  Pay(id:any , slot:any): void{
+  Pay(id:any , slot:any){
     this.serviceU.removeBooking(this.userid,{"id":id,"slot":slot});
     window.location.reload();
   }
 
-  Delete(id:any , slot:any): void{
+  Delete(id:any , slot:any){
     this.serviceU.removeBooking(this.userid,{"id":id,"slot":slot});
     this.serviceF.returnFeild(id,slot);
     window.location.reload();
